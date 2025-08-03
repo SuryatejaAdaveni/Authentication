@@ -8,7 +8,7 @@ export const connection = () => {
     .then(() => {
       console.log("mongo Connected");
     })
-    .catch(() => {
+    .catch((err) => {
       console.log(`failed to connect because ${err}`);
     });
 };
