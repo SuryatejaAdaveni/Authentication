@@ -8,13 +8,14 @@ import axios from "axios";
 import { Context } from "../main";
 import { Navigate, useNavigate } from "react-router-dom";
 import Footer from "../layout/Footer";
+import { Apiurl } from "../../Apiurl";
 
 const Home = () => {
   const { isAuthenticated, setIsAuthenticated, setUser } = useContext(Context);
 
   const logout = async () => {
     await axios
-      .get("http://localhost:5000/api/v1/user/logout", {
+      .get(`${Apiurl}/api/v1/user/logout`, {
         withCredentials: true,
       })
       .then((res) => {

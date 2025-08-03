@@ -3,6 +3,7 @@ import "../styles/ForgotPassword.css";
 import { Context } from "../main";
 import axios from "axios";
 import { toast } from "react-toastify";
+import { Apiurl } from "../../Apiurl";
 
 const ForgotPassword = () => {
   const { isAuthenticated } = useContext(Context);
@@ -12,7 +13,7 @@ const ForgotPassword = () => {
     e.preventDefault();
     await axios
       .post(
-        "http://localhost:5000/api/v1/user/password/forgot",
+        `${Apiurl}/api/v1/user/password/forgot`,
         { email },
         {
           withCredentials: true,

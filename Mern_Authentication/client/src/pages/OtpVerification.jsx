@@ -4,6 +4,7 @@ import axios from "axios";
 import { Navigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import { Context } from "../main";
+import { Apiurl } from "../../Apiurl";
 
 const OtpVerification = () => {
   const { isAuthenticated, setIsAuthenticated, setUser } = useContext(Context);
@@ -36,7 +37,7 @@ const OtpVerification = () => {
       phone,
     };
     await axios
-      .post("http://localhost:5000/api/v1/user/otp-verification", data, {
+      .post(`${Apiurl}/api/v1/user/otp-verification`, data, {
         withCredentials: true,
         headers: { "Content-Type": "application/json" },
       })
