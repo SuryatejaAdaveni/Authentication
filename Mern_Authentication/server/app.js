@@ -9,11 +9,17 @@ import { removeUnverifiedAccounts } from "./automation/removeUnverifiedAccounts.
 
 const app = express();
 config({ path: "./config.env" });
+const allowedOrigins = [
+  "https://mern-authenticaction-frontend.onrender.com",
+  "http://localhost:5000",
+];
+
 app.use(
   cors({
     origin: (origin, callback) => {
       console.log("Incoming origin:", origin);
-      if (origin === process.env.FRONTEND_URL) {
+      // allow requests with no origin (like Postman or curl)
+      if (!origin || allowedOrigins.includes(origin)) {
         callback(null, true);
       } else {
         callback(new Error("Not allowed by CORS"));
